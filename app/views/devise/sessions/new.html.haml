@@ -1,17 +1,17 @@
-%h2 Log in
+%h2 ログイン画面
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
-    = f.label :email
+    = f.label "メールアドレス"
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label "パスワード"
     %br/
     = f.password_field :password, autocomplete: "current-password"
   - if devise_mapping.rememberable?
     .field
       = f.check_box :remember_me
-      = f.label :remember_me
+      = f.label "確認"
   .actions
-    = f.submit "Log in"
+    = f.submit "ログイン"
 = render "devise/shared/links"
