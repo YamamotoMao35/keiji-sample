@@ -43,16 +43,23 @@ RSpec.describe Message, type: :model do
       expect(another_message.errors[:title]).to include("has already been taken")
     end
 
-    # bodyが20文字以下であれば作成できないこと
-    it "is valid with a body that has less than 20 characters" do
-      message = build(:message, body: "aaaaaaaaaa")
+    # bodyが6文字以下であれば作成できないこと
+    it "is valid with a body that has less than 6 characters" do
+      message = build(:message, body: "aaaaa")
       message.valid?
       expect(message.errors[:body][0]).to include("is too short")
     end
 
+    # bodyが30文字以上であれば作成できないこと
+    it "is valid with a body that has more than 30 characters" do
+      message = build(:message, body: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+      message.valid?
+      expect(message.errors[:body][0]).to include("is too long")
+    end
+
     # bodyが20文字以上であれば作成できること
-    it "is valid with a body that has more than 20 characters" do
-      message = build(:message, body: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    it "is valid with a body that has 6 to 30 characters" do
+      message = build(:message, body: "aaaaaaaaa")
       expect(message).to be_valid
     end
   end
