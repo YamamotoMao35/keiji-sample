@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :message do
-    title { "面白おじさん" }
+    title { "おもしろみほうさん" }
     body { "あああああああああああああああああああああああああああ" }
   end
 end
