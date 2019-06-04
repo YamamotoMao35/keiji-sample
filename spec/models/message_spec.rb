@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Message, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#create' do
+    it "is invalid without a title" do
+      message = Message.new(title: "", body: "そうじゃそうじゃ")
+      message.valid?
+      expect(message.errors[:title]).to include("can't be blank")
+    end
+  end
 end
