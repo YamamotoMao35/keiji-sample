@@ -1,5 +1,7 @@
 <h1>掲示板</h1>
 
+<div id="Moment"></div>
+
 <%= form_for(@message) do |f| %>
   <% if @message.errors.any? %>
     <% @message.errors.full_messages.each do |err| %>
